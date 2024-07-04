@@ -27,14 +27,6 @@ public class StringCompression {
         }
 
 
-        chars[index++] = tmp;
-        if (cnt > 1) {
-            for (char Ж
-                 c : Integer.toString(cnt).toCharArray()) {
-                chars[index++] = c;
-            }
-        }
-
         return index;
     }
 }
