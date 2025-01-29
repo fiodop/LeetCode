@@ -1,29 +1,41 @@
 package data_structures;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
-public class SimplifyPath {
 
+public class SimplifyPath {
     public String simplifyPath(String path) {
-        Stack<String> stack = new Stack<String>();
+        Stack<String> stack = new Stack<>();
         StringBuilder tmp = new StringBuilder();
         StringBuilder answ = new StringBuilder();
-        for (char c : path.toCharArray()) {
-            if (c != '/'){
+
+        for (char c : (path + "/").toCharArray()) {
+            if (c != '/') {
                 tmp.append(c);
             } else {
-                switch (tmp.toString()){
-                    case "..":
-                        tmp.setLength(0);
-                        stack.pop();
-                        break;
+                String dir = tmp.toString();
+                tmp.setLength(0);
 
-                    case ""
+                switch (dir) {
+                    case "..":
+                        if (!stack.isEmpty()) stack.pop();
+                        break;
+                    case ".":
+                    case "":
+                        break;
                     default:
-                        stack.push(tmp.toString());
+                        stack.push(dir);
                 }
             }
         }
+
+        if (stack.isEmpty()) return "/";
+
+        while (!stack.isEmpty()) {
+            answ.insert(0, "/" + stack.pop());
+        }
+
+        return answ.toString();
     }
 }
+
