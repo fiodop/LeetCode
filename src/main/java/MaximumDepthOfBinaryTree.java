@@ -1,18 +1,13 @@
-import java.util.Stack;
+import data_structures.TreeNode;
 
 public class MaximumDepthOfBinaryTree {
-    public  int maxDepth(TreeNode root) {
-            return maxDepthCnt(root, 0);
-
-
+    public int maxDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int cntRigthNode = maxDepth(root.right);
+        int cntLeftNode = maxDepth(root.left);
+        int maxDepth = Math.max(cntLeftNode + 1, cntRigthNode + 1);
+        return maxDepth;
     }
-    public int maxDepthCnt(TreeNode node, int cnt){
-        if(node == null){
-            return cnt;
-        } else {
-            int leftNodeCnt = maxDepthCnt(node.left, cnt++);
-            int rightNodeCnt = maxDepthCnt(node.right, cnt++);
-            return Math.max(leftNodeCnt, rightNodeCnt) + 1;
-
-        }}
 }
