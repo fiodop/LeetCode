@@ -6,7 +6,7 @@ public class MinimumOperationsToExceedThresholdValueII {
 
     public static void main(String[] args) {
         int[] arr = new int[]{2,11,10,1,3};
-        System.out.println(minOperations(arr, 10));
+//        System.out.println(minOperations(arr, 10));
     }
 //    public static int minOperations(int[] nums, int k) {
 //        Arrays.sort(nums);
